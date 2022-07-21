@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
 
         // setting sample Data for Pie Chart
         setDataForPieChart();
-
     }
 
     public void setDataForPieChart() {
