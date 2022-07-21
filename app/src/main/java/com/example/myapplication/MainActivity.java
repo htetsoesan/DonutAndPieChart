@@ -19,7 +19,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity {
+
     PieChart mChart;
+
     private final int[] yValues = {100, 40};
     private final String[] xValues = {"Men", "Women"};
 
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mChart = findViewById(R.id.piechart);
+
         mChart.setDescription("");
 
         mChart.setRotationEnabled(true);
@@ -44,97 +47,83 @@ public class MainActivity extends AppCompatActivity {
         }
 
         mChart.setCenterText(tempInt + "\n" + getString(R.string.lbl_employees));
-        mChart.setCenterTextSize(14);
+        mChart.setCenterTextSize(12);
         mChart.setCenterTextColor(getColor(R.color.purple_500));
-
-        setUpClickListener();
 
         // setting sample Data for Pie Chart
         setDataForPieChart();
+
+        setUpClickListener();
     }
 
     public void setDataForPieChart() {
-        ArrayList<Entry> yVals1 = new ArrayList<>();
+        ArrayList<Entry> yVals = new ArrayList<>();
 
         for (int i = 0; i < yValues.length; i++)
-            yVals1.add(new Entry(yValues[i], i));
+            yVals.add(new Entry(yValues[i], i));
 
         ArrayList<String> xVals = new ArrayList<>();
 
         Collections.addAll(xVals, xValues);
 
         // create pieDataSet
-        PieDataSet dataSet = new PieDataSet(yVals1, "");
+        PieDataSet dataSet = new PieDataSet(yVals, "");
         dataSet.setSliceSpace(0f);
         dataSet.setSelectionShift(3);
 
         // adding colors
         ArrayList<Integer> colors = new ArrayList<>();
 
-        // Added My Own colors
+        // add custom colors
         for (int c : MY_COLORS)
             colors.add(c);
 
-
+        // set color to data set
         dataSet.setColors(colors);
 
-        //  create pie data object and set xValues and yValues and set it to the pieChart
-        PieData data = new PieData(xVals, dataSet);
+        ArrayList<String> temp = new ArrayList<>();
 
-        //data.setValueFormatter(new PercentFormatter());
+        String legendValue = "";
+        for (int i = 0; i < xVals.size(); i++) {
+            for (int j = 0; j < yVals.size(); j++) {
+                legendValue = xValues[i] + "    " + yValues[i];
+            }
+            temp.add(legendValue);
+        }
+
+        //  create pie data object and set xValues and yValues and set it to the pieChart
+        PieData data = new PieData(temp, dataSet);
 
         data.setValueFormatter(new DecimalRemover(new DecimalFormat("###,###,###")));
-        data.setValueTextSize(10f);
+        data.setValueTextSize(10);
         data.setValueTextColor(Color.WHITE);
-
-        //For not drawing the entry-values
-        //data.setDrawValues(false);
 
         mChart.setData(data);
 
         // undo all highlights
         mChart.highlightValues(null);
 
-
         // refresh/update pie chart
         mChart.invalidate();
 
-        // animate piechart
+        // animate pie chart
         mChart.animateXY(1400, 1400);
 
         mChart.setUsePercentValues(true);
 
-        //For not drawing the x-values
+        // for not drawing the x-values
         mChart.setDrawSliceText(false);
 
         Legend mChartLegend = mChart.getLegend();
-        mChartLegend.setPosition(Legend.LegendPosition.BELOW_CHART_CENTER);
-
-
-        mChartLegend.setForm(Legend.LegendForm.CIRCLE);
         mChartLegend.setFormSize(12);
         mChartLegend.setTextSize(14f);
+        mChartLegend.setDirection(Legend.LegendDirection.LEFT_TO_RIGHT);
 
-        // Legends to show on bottom of the graph
-/*        Legend mChartLegend = mChart.getLegend();
-        mChartLegend.setPosition(Legend.LegendPosition.BELOW_CHART_CENTER);
+        mChartLegend.setPosition(Legend.LegendPosition.RIGHT_OF_CHART_CENTER);
 
-        mChartLegend.setXEntrySpace(7);
-        mChartLegend.setYEntrySpace(8);
-        mChartLegend.setTextSize(12);
-        mChartLegend.setFormSize(10);
-        mChartLegend.setFormToTextSpace(2);
-        mChartLegend.setWordWrapEnabled(true);*/
-
-        //legend attributes
-/*
+        // set what type of form/shape should be used
         mChartLegend.setForm(Legend.LegendForm.CIRCLE);
-        mChartLegend.setTextSize(12);
-        mChartLegend.setFormSize(20);
-        mChartLegend.setFormToTextSpace(2);
-        //to wrap legend text
-        mChartLegend.setWordWrapEnabled(true);
-        Log.d("legend " ,mChartLegend.getEntries().toString());*/
+
     }
 
 
