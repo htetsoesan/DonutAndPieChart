@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
     public static final int[] MY_COLORS = {
             Color.rgb(20, 122, 214),
             Color.rgb(235, 101, 101)
-
     };
 
     @Override
