@@ -11,17 +11,15 @@ import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity {
     PieChart mChart;
-    MyValueFormatter myValueFormatter = new MyValueFormatter();
-
     private final int[] yValues = {100, 40};
     private final String[] xValues = {"Men", "Women"};
 
@@ -36,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mChart = (PieChart) findViewById(R.id.piechart);
+        mChart = findViewById(R.id.piechart);
         mChart.setDescription("");
 
         mChart.setRotationEnabled(true);
@@ -58,15 +56,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setDataForPieChart() {
-        ArrayList<Entry> yVals1 = new ArrayList<Entry>();
+        ArrayList<Entry> yVals1 = new ArrayList<>();
 
         for (int i = 0; i < yValues.length; i++)
             yVals1.add(new Entry(yValues[i], i));
 
         ArrayList<String> xVals = new ArrayList<>();
 
-        for (int i = 0; i < xValues.length; i++)
-            xVals.add(xValues[i]);
+        Collections.addAll(xVals, xValues);
 
         // create pieDataSet
         PieDataSet dataSet = new PieDataSet(yVals1, "");
@@ -119,8 +116,6 @@ public class MainActivity extends AppCompatActivity {
         mChartLegend.setForm(Legend.LegendForm.CIRCLE);
         mChartLegend.setFormSize(12);
         mChartLegend.setTextSize(14f);
-
-
 
         // Legends to show on bottom of the graph
 /*        Legend mChartLegend = mChart.getLegend();
