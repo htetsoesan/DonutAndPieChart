@@ -14,7 +14,8 @@ public class DecimalRemover extends PercentFormatter {
     }
 
     @Override
-    public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
+    public String getFormattedValue(float value, Entry entry, int dataSetIndex,
+                                    ViewPortHandler viewPortHandler) {
         return mFormat.format(value) + " %";
     }
 }

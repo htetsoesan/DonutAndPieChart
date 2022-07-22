@@ -57,19 +57,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setDataForPieChart() {
-        ArrayList<Entry> yVals = new ArrayList<>();
+        ArrayList<Entry> pieEntries = new ArrayList<>();
 
         for (int i = 0; i < yValues.length; i++)
-            yVals.add(new Entry(yValues[i], i));
+            pieEntries.add(new Entry(yValues[i], i));
 
         ArrayList<String> xVals = new ArrayList<>();
 
         Collections.addAll(xVals, xValues);
 
         // create pieDataSet
-        PieDataSet dataSet = new PieDataSet(yVals, "");
-        dataSet.setSliceSpace(0f);
-        dataSet.setSelectionShift(3);
+        PieDataSet pieDataSet = new PieDataSet(pieEntries, null);
+        pieDataSet.setSliceSpace(0f);
+        pieDataSet.setSelectionShift(3);
 
         // adding colors
         ArrayList<Integer> colors = new ArrayList<>();
@@ -79,20 +79,20 @@ public class MainActivity extends AppCompatActivity {
             colors.add(c);
 
         // set color to data set
-        dataSet.setColors(colors);
+        pieDataSet.setColors(colors);
 
         ArrayList<String> temp = new ArrayList<>();
 
         String legendValue = "";
         for (int i = 0; i < xVals.size(); i++) {
-            for (int j = 0; j < yVals.size(); j++) {
+            for (int j = 0; j < pieEntries.size(); j++) {
                 legendValue = xValues[i] + "    " + yValues[i];
             }
             temp.add(legendValue);
         }
 
         //  create pie data object and set xValues and yValues and set it to the pieChart
-        PieData data = new PieData(temp, dataSet);
+        PieData data = new PieData(temp, pieDataSet);
 
         data.setValueFormatter(new DecimalRemover(new DecimalFormat("###,###,###")));
         data.setValueTextSize(10);
@@ -118,11 +118,10 @@ public class MainActivity extends AppCompatActivity {
         mChartLegend.setFormSize(12);
         mChartLegend.setTextSize(14f);
         mChartLegend.setDirection(Legend.LegendDirection.LEFT_TO_RIGHT);
-
         mChartLegend.setPosition(Legend.LegendPosition.RIGHT_OF_CHART_CENTER);
-
         // set what type of form/shape should be used
         mChartLegend.setForm(Legend.LegendForm.CIRCLE);
+        mChartLegend.setYOffset(0f);
 
     }
 
@@ -136,7 +135,8 @@ public class MainActivity extends AppCompatActivity {
                 if (e == null)
                     return;
 
-                Toast.makeText(MainActivity.this, xValues[e.getXIndex()] + " is " + e.getVal() + "", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, xValues[e.getXIndex()]
+                        + " is " + e.getVal() + "", Toast.LENGTH_SHORT).show();
             }
 
             @Override
