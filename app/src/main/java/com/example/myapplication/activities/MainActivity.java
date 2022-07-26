@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.activities;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -6,11 +6,14 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.DecimalRemover;
+import com.example.myapplication.R;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 
@@ -37,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         mChart = findViewById(R.id.piechart);
 
-        mChart.setDescription("");
+        mChart.getDescription().setEnabled(false);
 
         mChart.setRotationEnabled(true);
 
@@ -57,10 +60,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setDataForPieChart() {
-        ArrayList<Entry> pieEntries = new ArrayList<>();
+        ArrayList<PieEntry> pieEntries = new ArrayList<>();
 
         for (int i = 0; i < yValues.length; i++)
-            pieEntries.add(new Entry(yValues[i], i));
+            pieEntries.add(new PieEntry(yValues[i], i));
 
         ArrayList<String> xVals = new ArrayList<>();
 
@@ -92,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //  create pie data object and set xValues and yValues and set it to the pieChart
-        PieData data = new PieData(temp, pieDataSet);
+        PieData data = new PieData(pieDataSet);
 
         data.setValueFormatter(new DecimalRemover(new DecimalFormat("###,###,###")));
         data.setValueTextSize(10);
@@ -130,13 +133,13 @@ public class MainActivity extends AppCompatActivity {
         mChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
 
             @Override
-            public void onValueSelected(Entry e, int dataSetIndex, Highlight h) {
+            public void onValueSelected(Entry e, Highlight h) {
                 // display msg when value selected
                 if (e == null)
                     return;
 
-                Toast.makeText(MainActivity.this, xValues[e.getXIndex()]
-                        + " is " + e.getVal() + "", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, xValues[(int) e.getX()]
+                        + " is " + e.getY() + "", Toast.LENGTH_SHORT).show();
             }
 
             @Override

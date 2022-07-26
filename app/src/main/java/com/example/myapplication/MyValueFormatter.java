@@ -1,3 +1,4 @@
+/*
 package com.example.myapplication;
 
 import com.github.mikephil.charting.data.Entry;
@@ -20,3 +21,4 @@ public class MyValueFormatter implements ValueFormatter {
         return mFormat.format(value) + ""; // e.g. append a dollar-sign
     }
 }
+*/
