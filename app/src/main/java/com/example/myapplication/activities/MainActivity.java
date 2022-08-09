@@ -1,7 +1,9 @@
 package com.example.myapplication.activities;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,6 +26,7 @@ import java.util.Collections;
 public class MainActivity extends AppCompatActivity {
 
     PieChart mChart;
+    Button button;
 
     private final int[] yValues = {100, 40};
     private final String[] xValues = {"Men", "Women"};
@@ -32,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
             Color.rgb(20, 122, 214),
             Color.rgb(235, 101, 101)
     };
+    private Button btnScrollBarChart, btnHorizontalBarChart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +43,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mChart = findViewById(R.id.piechart);
+
+        button = findViewById(R.id.btnPieChart);
+        btnScrollBarChart = findViewById(R.id.btnScrollBarChart);
+        btnHorizontalBarChart = findViewById(R.id.btnHorizontalBarChart);
 
         mChart.getDescription().setEnabled(false);
 
@@ -115,7 +123,8 @@ public class MainActivity extends AppCompatActivity {
         mChart.setUsePercentValues(true);
 
         // for not drawing the x-values
-        mChart.setDrawSliceText(false);
+        //mChart.setDrawSliceText(false);
+        mChart.setDrawEntryLabels(true);
 
         Legend mChartLegend = mChart.getLegend();
         mChartLegend.setFormSize(12);
@@ -146,6 +155,21 @@ public class MainActivity extends AppCompatActivity {
             public void onNothingSelected() {
 
             }
+        });
+
+        button.setOnClickListener(view -> {
+            Intent intent = new Intent(this, PieChartAndRingDetail.class);
+            startActivity(intent);
+        });
+
+        btnScrollBarChart.setOnClickListener(view -> {
+            Intent intent = new Intent(this, ScrollingHorizontalBarChartActivity.class);
+            startActivity(intent);
+        });
+
+        btnHorizontalBarChart.setOnClickListener(view -> {
+            Intent intent = new Intent(this, HorizontalBarChartActivity.class);
+            startActivity(intent);
         });
     }
 }

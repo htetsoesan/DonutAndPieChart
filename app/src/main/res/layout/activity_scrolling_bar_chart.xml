@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        tools:context=".activities.ScrollingHorizontalBarChartActivity">
+
+        <!--List-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_horizontal_bar_chart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/x_axis_view"
+            android:clipToPadding="false"
+            android:layoutAnimation="@anim/layout_animation"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        <!-- android:layoutAnimation="@anim/layout_animation"-->
+        <!--X Axis-->
+        <View
+            android:id="@+id/x_axis_view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_above="@id/x_axis_textview_container_layout"
+            android:background="#CCCCCC" />
+
+        <!--Data Values-->
+        <LinearLayout
+            android:id="@+id/x_axis_textview_container_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+
+
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

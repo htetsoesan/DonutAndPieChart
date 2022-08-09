@@ -1,4 +1,4 @@
-package com.example.myapplication.CustomRenderer;
+package com.example.myapplication.Customize;
 
 import android.graphics.Canvas;
 

@@ -77,6 +77,17 @@
                 android:id="@+id/pie_chat2"
                 android:layout_width="match_parent"
                 android:layout_height="250dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnRadicalBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/margin_medium_2"
+                android:backgroundTint="@color/teal_700"
+                android:text="@string/lbl_ring_chart"
+                android:textAllCaps="false"
+                android:textColor="@color/white" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

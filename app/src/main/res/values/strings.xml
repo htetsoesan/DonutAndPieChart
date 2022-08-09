@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">DonutAndPieChart</string>
     <string name="lbl_employees">Employees</string>
+    <string name="lbl_ring_chart">Ring Chart</string>
+    <string name="dash">-</string>
+    <string name="scrollViewStart">START OF SCROLLVIEW</string>
+    <string name="scrollViewEnd">END OF SCROLLVIEW</string>
+    <string name="lbl_zero_string">0</string>
 </resources>

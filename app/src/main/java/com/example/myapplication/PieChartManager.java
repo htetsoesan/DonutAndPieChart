@@ -3,7 +3,7 @@ package com.example.myapplication;
 import android.graphics.Color;
 import android.graphics.Typeface;
 
-import com.example.myapplication.CustomRenderer.CustomPieChartRenderer;
+import com.example.myapplication.Customize.CustomPieChartRenderer;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.PieData;

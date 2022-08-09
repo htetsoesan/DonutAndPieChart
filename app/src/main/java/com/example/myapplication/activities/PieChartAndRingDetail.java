@@ -1,7 +1,9 @@
 package com.example.myapplication.activities;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -34,6 +36,15 @@ public class PieChartAndRingDetail extends AppCompatActivity {
         //showhodlePieChart();
 
         showRingPieChart();
+        setClickListener();
+    }
+
+    private void setClickListener() {
+        Button button = findViewById(R.id.btnRadicalBar);
+        button.setOnClickListener(view -> {
+            Intent intent = new Intent(this, RadicalBarActivity.class);
+            startActivity(intent);
+        });
     }
 
     private void showhodlePieChart() {

@@ -32,6 +32,48 @@
             android:layout_marginTop="@dimen/margin_medium_2"
             android:layout_marginEnd="@dimen/margin_medium_2"
             android:layout_marginBottom="@dimen/margin_medium_2" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnPieChart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/piechart"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/margin_medium_2"
+            android:backgroundTint="@color/teal_700"
+            android:text="Pie Chart"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnScrollBarChart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnPieChart"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/margin_medium_2"
+            android:layout_marginTop="@dimen/margin_medium_2"
+            android:layout_marginEnd="@dimen/margin_medium_2"
+            android:layout_marginBottom="@dimen/margin_medium_2"
+            android:backgroundTint="@color/teal_700"
+            android:text="Scrolling Bar Chart"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnHorizontalBarChart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnScrollBarChart"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/margin_medium_2"
+            android:layout_marginTop="@dimen/margin_medium_2"
+            android:layout_marginEnd="@dimen/margin_medium_2"
+            android:layout_marginBottom="@dimen/margin_medium_2"
+            android:backgroundTint="@color/teal_700"
+            android:text="Horizontal Bar Chart"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
     </RelativeLayout>
 </com.google.android.material.card.MaterialCardView>
 
